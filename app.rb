@@ -36,6 +36,7 @@ class Stringer < Sinatra::Base
     enable :sessions
     set :session_secret, ENV["SECRET_TOKEN"] || SecureRandom.hex(32)
     enable :logging
+    ActiveRecord::Base.logger.level = Logger::INFO
     enable :method_override
 
     ActiveRecord::Base.include_root_in_json = false
